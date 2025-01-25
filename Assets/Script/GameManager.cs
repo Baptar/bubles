@@ -11,21 +11,63 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Texture[] texturesBackground;
     [SerializeField] private EventManager eventManager;
     
+    [SerializeField] private MissionTrigger[] missionTriggers;
+    [SerializeField] private GameObject[] missionDescription;
+    
     private int age = 0;
     private int actualMission = 0;
+    private bool[] randomMissionsProgress;
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        randomMissionsProgress = new bool[missionTriggers.Length];
     }
 
-    // Update is called once per frame
-    void Update()
+    private int SelectRandomMission()
     {
+        // Calculate number of available events
+        int cpt = 0;
+        for (int i = 0; i < randomMissionsProgress.Length; i++)
+        {
+            if (!randomMissionsProgress[i])
+            {
+                cpt++;
+            }
+        }
         
+        // case we don't have any more event available
+        if (cpt == 0)
+        {
+            return Random.Range(0, randomMissionsProgress.Length);
+        }
+        
+        // create array of number available missions
+        int[] indexUnused = new int[cpt];
+        int index = 0;
+        for (int i = 0; i < randomMissionsProgress.Length; i++)
+        {
+            if (!randomMissionsProgress[i])
+            {
+                indexUnused[index] = i;
+                index++;
+            }
+        }
+        
+        // get random event in array of available events 
+        int rep = indexUnused[Random.Range(0, indexUnused.Length)];
+        randomMissionsProgress[rep] = true;
+        return rep;
     }
 
+    public void ShowRandomMission()
+    {
+        int i = SelectRandomMission(); 
+        missionDescription[i].SetActive(true);
+        missionTriggers[i].gameObject.SetActive(true);
+    }
+    
     public void OnMissionComplete()
     {
         actualMission++;
@@ -69,6 +111,7 @@ public class GameManager : MonoBehaviour
         SetAge(0);
         actualMission = 0;
         playerBubble.KillPlayer();
+        // LANCER LA PREMIERE MISSION/tuto APRES LE SPAWN (quand on appuie sur bouton)
     }
 
     public void GameWin()
