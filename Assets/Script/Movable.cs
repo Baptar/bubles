@@ -6,7 +6,7 @@ public class Movable : MonoBehaviour
 {
     [SerializeField] private float _moveStrength = 20.0f;
     
-    private Rigidbody2D _rb;
+    protected Rigidbody2D _rb;
     private bool _mouseOn;
     
     private List<GameObject> _hittingObjects = new List<GameObject>();

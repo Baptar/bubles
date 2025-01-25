@@ -24,13 +24,12 @@ public class PlayerBubble : Movable
     [SerializeField] private float _resistance;
     private Vector3 _hitLastPos;
     private bool _hasLastPos;
-
-    private Rigidbody2D _rb;
+    private Animator _animator;
 
     public override void Awake()
     {
         base.Awake();
-        _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
     
     void Start()
@@ -61,6 +60,7 @@ public class PlayerBubble : Movable
 
     public void SpawnPlayer()
     {
+        _rb.bodyType = RigidbodyType2D.Dynamic;
         if (name == "") { name = spriteNames[Random.Range(0, spriteNames.Length)]; }
         GetComponent<SpriteRenderer>().enabled = true;
         bubbleCustom.SetActive(false);
@@ -72,32 +72,7 @@ public class PlayerBubble : Movable
         transform.position = spawnTransform.position;
         bubbleCustom.SetActive(true);
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        print("triggerrrrr");
-        if (other.CompareTag("Obstacle"))
-        {
-            print("ezuohfiuezuhf");
-            Obstacle obstacle = other.gameObject.GetComponent<Obstacle>();
-            if (obstacle)
-            {
-                if (!_hasLastPos)
-                {
-                    _hitLastPos = transform.position;
-                    _hasLastPos = true;
-                }
-                else
-                {
-                    Vector2 velocity = transform.position - _hitLastPos;
-                    float damage = obstacle.DamageAmount * velocity.magnitude;
-                    if(damage > _resistance)
-                        KillPlayer();
-                }
-            }
-        }
-    }
-
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.CompareTag("Obstacle"))
@@ -108,7 +83,12 @@ public class PlayerBubble : Movable
             {
                 float damage = obstacle.DamageAmount * _rb.linearVelocity.magnitude;
                 if (damage > _resistance)
-                    KillPlayer();
+                {
+                    _rb.bodyType = RigidbodyType2D.Kinematic;
+                    _rb.linearVelocity = Vector2.zero;
+                    _rb.angularVelocity = 0.0f;
+                    _animator.SetTrigger("Die");
+                }
             }
         }
     }
