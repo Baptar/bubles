@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movable : MonoBehaviour
 {
+    [SerializeField] private float _moveStrength = 20.0f;
+    
     private Rigidbody2D _rb;
     private bool _mouseOn;
 
@@ -17,7 +19,7 @@ public class Movable : MonoBehaviour
 
     public void CursorHit(Vector2 force)
     {
-        _rb.AddForce(force * 20.0f);
+        _rb.AddForce(force * _moveStrength);
     }
 
     private void OnMouseEnter()
