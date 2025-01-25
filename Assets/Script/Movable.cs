@@ -11,7 +11,7 @@ public class Movable : MonoBehaviour
     
     private List<GameObject> _hittingObjects = new List<GameObject>();
 
-    private void Awake()
+    public virtual void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }

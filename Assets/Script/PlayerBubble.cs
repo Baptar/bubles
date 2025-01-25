@@ -25,6 +25,14 @@ public class PlayerBubble : Movable
     private Vector3 _hitLastPos;
     private bool _hasLastPos;
 
+    private Rigidbody2D _rb;
+
+    public override void Awake()
+    {
+        base.Awake();
+        _rb = GetComponent<Rigidbody2D>();
+    }
+    
     void Start()
     {
         GetComponent<SpriteRenderer>().enabled = false;
@@ -65,10 +73,12 @@ public class PlayerBubble : Movable
         bubbleCustom.SetActive(true);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        print("triggerrrrr");
         if (other.CompareTag("Obstacle"))
         {
+            print("ezuohfiuezuhf");
             Obstacle obstacle = other.gameObject.GetComponent<Obstacle>();
             if (obstacle)
             {
@@ -87,4 +97,20 @@ public class PlayerBubble : Movable
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.CompareTag("Obstacle"))
+        {
+            print("uzeugfiyezgbf");
+            Obstacle obstacle = other.gameObject.GetComponent<Obstacle>();
+            if (obstacle)
+            {
+                float damage = obstacle.DamageAmount * _rb.linearVelocity.magnitude;
+                if (damage > _resistance)
+                    KillPlayer();
+            }
+        }
+    }
 }
+
