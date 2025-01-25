@@ -32,7 +32,7 @@ public class Movable : MonoBehaviour
                 //Vector3 hitPos = Input.mousePosition;
                 //Vector3 dir = transform.position - hitPos;
                 //Vector3 force = Vector3.Project(mouseVelocity, dir);
-                CursorHit(new Vector2(mouseVelocity.x, mouseVelocity.y));
+                CursorHit(new Vector2(mouseVelocity.x, mouseVelocity.y) * Time.fixedDeltaTime * 100f);
                 //CursorHit(new Vector2(force.x, force.y));
                 _mouseOn = true;
             }
