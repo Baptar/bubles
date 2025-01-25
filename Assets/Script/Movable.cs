@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movable : MonoBehaviour
 {
-    [SerializeField] private float _moveStrength = 20.0f;
+    [SerializeField] protected float _moveStrength = 20.0f;
     
     protected Rigidbody2D _rb;
     private bool _mouseOn;

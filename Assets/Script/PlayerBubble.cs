@@ -72,6 +72,21 @@ public class PlayerBubble : Movable
         transform.position = spawnTransform.position;
         bubbleCustom.SetActive(true);
     }
+
+    public void ChangeSpeed(float multiplier)
+    {
+        _moveStrength *= multiplier;
+    }
+
+    public void ChangeGravity(float multiplier)
+    {
+        _rb.gravityScale *= multiplier;
+    }
+
+    public void ChangeResistance(float multiplier)
+    {
+        _resistance *= multiplier;
+    }
     
     private void OnCollisionEnter2D(Collision2D other)
     {
