@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Movable : MonoBehaviour
 {
     private Rigidbody2D _rb;
     private bool _mouseOn;
+
+    private Vector2 _hitVelocity;
+    private List<GameObject> _hittingObjects = new List<GameObject>();
 
     private void Awake()
     {
@@ -22,7 +26,7 @@ public class Movable : MonoBehaviour
         {
             if (!_mouseOn)
             {
-                Vector3 mouseVelocity = Input.mousePositionDelta;
+                Vector2 mouseVelocity = Input.mousePositionDelta;
                 //Vector3 hitPos = Input.mousePosition;
                 //Vector3 dir = transform.position - hitPos;
                 //Vector3 force = Vector3.Project(mouseVelocity, dir);
@@ -37,4 +41,5 @@ public class Movable : MonoBehaviour
     {
         _mouseOn = false;
     }
+
 }
