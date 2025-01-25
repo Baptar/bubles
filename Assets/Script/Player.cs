@@ -12,13 +12,17 @@ public class Player : MonoBehaviour
 
 
     private PlayerBubble _bubble;
-
+    private static int killCount = 0;
+    
     public PlayerBubble Bubble
     {
         set { _bubble = value; }
     }
-    
-    
+
+    public void IncreaseKillCount()
+    {
+        killCount++;
+    }
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
