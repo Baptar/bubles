@@ -24,7 +24,7 @@ public class CameraManager : MonoBehaviour
     public float speed;
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (playerBubble.transform.position.x < leftLimitTransformRef.position.x)
         {

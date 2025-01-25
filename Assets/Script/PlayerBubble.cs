@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Unity.VisualStudio.Editor;
+using TMPro;
 using UnityEngine;
 using UnityEngine.U2D;
 using Random = UnityEngine.Random;
@@ -13,14 +14,19 @@ public class PlayerBubble : Movable
     [SerializeField] private Sprite[] spriteAccessory3;
     [SerializeField] private Sprite[] spriteAccessory4;
     [SerializeField] private Sprite[] spriteAccessory5;
+<<<<<<< Updated upstream
 
     [SerializeField] private GameObject _missionSuccessPoint;
+=======
+    [SerializeField] private GameObject killCounntText;
+>>>>>>> Stashed changes
     
     private string name;
     private int accessoryIndex = 0;
     private int colorIndex = 0;
     private Sprite[][] sprites = new Sprite[5][];
     private string[] spriteNames = { "Pablo", "Bap", "Luna", "Seb", "Virgile", "Justine", "Nat", "Daph" };
+    private int killCount = 0;
     
     //Damage
     [SerializeField] private float _resistance;
@@ -42,6 +48,11 @@ public class PlayerBubble : Movable
         sprites[2] = spriteAccessory3;
         sprites[3] = spriteAccessory4;
         sprites[4] = spriteAccessory5;
+    }
+    
+    public void IncreaseKillCount()
+    {
+        killCount++;
     }
     
     public void SetName(string name) { this.name = name; }
@@ -70,6 +81,8 @@ public class PlayerBubble : Movable
 
     public void KillPlayer()
     {
+        IncreaseKillCount();
+        killCounntText.GetComponent<TextMeshProUGUI>().text = killCount.ToString();
         GetComponent<SpriteRenderer>().enabled = false;
         transform.position = spawnTransform.position;
         bubbleCustom.SetActive(true);

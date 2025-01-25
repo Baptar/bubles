@@ -79,4 +79,6 @@ public class EventManager : MonoBehaviour
                 break;
         }
     }
+    
+    public void 
 }
