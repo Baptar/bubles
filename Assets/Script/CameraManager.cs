@@ -1,5 +1,5 @@
 using System;
-using Unity.VisualScripting;
+using DG.Tweening;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -21,23 +21,12 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Transform bottomWorldTransformRef;
     [SerializeField] private Transform leftWorldTransformRef;
     [SerializeField] private Transform rightWorldTransformRef;
-    
-    [SerializeField] private float minSpeed = 1f;
-    [SerializeField] private float maxSpeed = 3f;
-    private Vector3 desiredPosition;
 
-    private float speed;
-    private void Start()
-    {
-        
-    }
+    public float speed;
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        speed = Mathf.Clamp(Mathf.Lerp(Math.Max(0.0f,  Vector3.Distance (rightLimitTransformRef.transform.position, playerBubble.transform.position))
-                                       / Vector3.Distance(rightLimitTransformRef.transform.position, rightWorldTransformRef.transform.position), speed, maxSpeed) 
-                                        , minSpeed, maxSpeed);
         if (playerBubble.transform.position.x < leftLimitTransformRef.position.x)
         {
             // bouger vers la gauche
@@ -70,51 +59,6 @@ public class CameraManager : MonoBehaviour
                 transform.Translate(-Vector3.up * Time.deltaTime * speed);
             }
         }
-        
-        /*if (playerBubble.transform.position.x < leftLimitTransformRef.position.x)
-        {
-            // bouger vers la gauche
-            desiredPosition = Vector3.right * -5.0f + offset;
-            if (CanGoLeft())
-            {
-                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, speed);
-                transform.position = smoothedPosition;
-                //transform.Translate(-Vector3.right * Time.deltaTime * speed);
-            }
-        }
-        else if (playerBubble.transform.position.x > rightLimitTransformRef.position.x)
-        {
-            // bouger vers la droite
-            desiredPosition = Vector3.right * 5.0f + offset;
-            if (CanGoRight())
-            {
-                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, speed);
-                transform.position = smoothedPosition;
-                //transform.Translate(Vector3.right * Time.deltaTime * speed);
-            }
-        }
-        else if (playerBubble.transform.position.y > topLimitTransformRef.position.y)
-        {
-            // bouger vers le haut
-            desiredPosition = Vector3.up * 5.0f + offset;
-            if (CanGoUp())
-            {
-                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, speed);
-                transform.position = smoothedPosition;
-                //transform.Translate(Vector3.up * Time.deltaTime * speed);
-            }
-        }
-        else if (playerBubble.transform.position.y < bottomLimitTransformRef.position.y)
-        {
-            // bouger vers le bas
-            desiredPosition = Vector3.up * -5.0f + offset;
-            if (CanGoDown())
-            {
-                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, speed);
-                transform.position = smoothedPosition;
-                //transform.Translate(-Vector3.up * Time.deltaTime * speed);
-            }
-        }*/
     }
 
     private bool CanGoLeft()
