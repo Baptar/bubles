@@ -58,25 +58,25 @@ public class Player : MonoBehaviour
 
     private bool CheckBounds(Vector2 mouseMovement)
     {
-        if (mouseMovement.x < 0 && transform.position.x <= _movementRangeX.x)
+        if (mouseMovement.x > 0 && transform.position.x <= _movementRangeX.x)
         {
             //ClampPos(mouseMovement);
             return false;
         }
 
-        if (mouseMovement.x > 0 && transform.position.x >= _movementRangeX.y)
+        if (mouseMovement.x < 0 && transform.position.x >= _movementRangeX.y)
         {
             //ClampPos(mouseMovement);
             return false;
         }
 
-        if (mouseMovement.y < 0 && transform.position.y <= _movementRangeY.x)
+        if (mouseMovement.y > 0 && transform.position.y <= _movementRangeY.x)
         {
             //ClampPos(mouseMovement);
             return false;
         }
 
-        if (mouseMovement.y > 0 && transform.position.y >= _movementRangeY.y)
+        if (mouseMovement.y < 0 && transform.position.y >= _movementRangeY.y)
         {
             //ClampPos(mouseMovement);
             return false;
@@ -90,16 +90,16 @@ public class Player : MonoBehaviour
         float xClamped = transform.position.x;
         float yClamped = transform.position.y;
 
-        if (mouseMovement.x < 0 && transform.position.x <= _movementRangeX.x)
+        if (mouseMovement.x > 0 && transform.position.x <= _movementRangeX.x)
             xClamped = _movementRangeX.x;
 
-        if (mouseMovement.x > 0 && transform.position.x >= _movementRangeX.y)
+        if (mouseMovement.x < 0 && transform.position.x >= _movementRangeX.y)
             xClamped = _movementRangeX.y;
 
-        if (mouseMovement.y < 0 && transform.position.y <= _movementRangeY.x)
+        if (mouseMovement.y > 0 && transform.position.y <= _movementRangeY.x)
             yClamped = _movementRangeY.x;
 
-        if (mouseMovement.y > 0 && transform.position.y >= _movementRangeY.y)
+        if (mouseMovement.y < 0 && transform.position.y >= _movementRangeY.y)
             yClamped = _movementRangeY.y;
 
         transform.position = new Vector3(xClamped, yClamped, 0);
