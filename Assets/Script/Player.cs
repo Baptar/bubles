@@ -48,6 +48,13 @@ public class Player : MonoBehaviour
         {
             _cam.orthographicSize -= mouseScroll * (Time.deltaTime * _zoomSense);
         }
+        
+        //recenter
+        if (Input.GetKey(KeyCode.Mouse2))
+        {
+            transform.position = new Vector3(_bubble.transform.position.x, _bubble.transform.position.y,
+                transform.position.z);
+        }
     }
 
     private bool CheckBounds(Vector2 mouseMovement)
