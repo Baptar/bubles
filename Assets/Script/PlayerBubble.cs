@@ -13,6 +13,8 @@ public class PlayerBubble : Movable
     [SerializeField] private Sprite[] spriteAccessory3;
     [SerializeField] private Sprite[] spriteAccessory4;
     [SerializeField] private Sprite[] spriteAccessory5;
+
+    [SerializeField] private GameObject _missionSuccessPoint;
     
     private string name;
     private int accessoryIndex = 0;
@@ -60,10 +62,10 @@ public class PlayerBubble : Movable
 
     public void SpawnPlayer()
     {
-        _rb.bodyType = RigidbodyType2D.Dynamic;
         if (name == "") { name = spriteNames[Random.Range(0, spriteNames.Length)]; }
         GetComponent<SpriteRenderer>().enabled = true;
         bubbleCustom.SetActive(false);
+        UnblockMovement();
     }
 
     public void KillPlayer()
@@ -87,21 +89,25 @@ public class PlayerBubble : Movable
     {
         _resistance *= multiplier;
     }
+
+    public void OnMissionSuccess()
+    {
+        BlockMovement();
+        transform.position = _missionSuccessPoint.transform.position;
+        UnblockMovement();
+    }
     
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.CompareTag("Obstacle"))
         {
-            print("uzeugfiyezgbf");
             Obstacle obstacle = other.gameObject.GetComponent<Obstacle>();
             if (obstacle)
             {
                 float damage = obstacle.DamageAmount * _rb.linearVelocity.magnitude;
                 if (damage > _resistance)
                 {
-                    _rb.bodyType = RigidbodyType2D.Kinematic;
-                    _rb.linearVelocity = Vector2.zero;
-                    _rb.angularVelocity = 0.0f;
+                    BlockMovement();
                     _animator.SetTrigger("Die");
                 }
             }

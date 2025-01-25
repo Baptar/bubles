@@ -43,4 +43,16 @@ public class Movable : MonoBehaviour
         _mouseOn = false;
     }
 
+    public void BlockMovement()
+    {
+        _rb.bodyType = RigidbodyType2D.Kinematic;
+        _rb.linearVelocity = Vector2.zero;
+        _rb.angularVelocity = 0.0f;
+    }
+
+    public void UnblockMovement()
+    {
+        _rb.bodyType = RigidbodyType2D.Dynamic;
+    }
+
 }
