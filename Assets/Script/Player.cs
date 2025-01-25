@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float _movementSpeed = 1f;
     [SerializeField] private Vector2 _movementRangeX;
     [SerializeField] private Vector2 _movementRangeY;
-
     [SerializeField] private float _zoomSense = 1f;
 
 

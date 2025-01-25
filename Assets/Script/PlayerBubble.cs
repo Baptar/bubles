@@ -4,21 +4,19 @@ using UnityEngine.U2D;
 
 public class PlayerBubble : Movable
 {
-    private string name;
-    private int accessoryIndex = 0;
-    private int colorIndex = 0;
-    
     [SerializeField] private GameObject bubbleCustom;
-    
-    public Transform spawnTransform;
+    [SerializeField] private Transform spawnTransform;
     [SerializeField] private Sprite[] spriteAccessory1;
     [SerializeField] private Sprite[] spriteAccessory2;
     [SerializeField] private Sprite[] spriteAccessory3;
     [SerializeField] private Sprite[] spriteAccessory4;
     [SerializeField] private Sprite[] spriteAccessory5;
     
+    private string name;
+    private int accessoryIndex = 0;
+    private int colorIndex = 0;
     private Sprite[][] sprites = new Sprite[5][];
-    
+    private string[] spriteNames = { "Pablo", "Bap", "Luna", "Seb", "Virgile", "Justine", "Nat", "Daph" };
 
     void Start()
     {
@@ -48,6 +46,7 @@ public class PlayerBubble : Movable
 
     public void SpawnPlayer()
     {
+        if (name == "") { name = spriteNames[Random.Range(0, spriteNames.Length)]; }
         GetComponent<SpriteRenderer>().enabled = true;
         bubbleCustom.SetActive(false);
     }
