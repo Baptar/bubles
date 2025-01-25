@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94eebf4755a04534c96bcaf501bba7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _physicsCursorPrefab: {fileID: 5834136710716463162, guid: 3ee1d07992f6e3a428bbdf8e75a3373b, type: 3}
   _cam: {fileID: 1945827645764185757}
   _movementSpeed: 5
   _movementRangeX: {x: -10, y: 10}
