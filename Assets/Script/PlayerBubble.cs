@@ -19,6 +19,11 @@ public class PlayerBubble : Movable
     private int colorIndex = 0;
     private Sprite[][] sprites = new Sprite[5][];
     private string[] spriteNames = { "Pablo", "Bap", "Luna", "Seb", "Virgile", "Justine", "Nat", "Daph" };
+    
+    //Damage
+    [SerializeField] private float _resistance;
+    private Vector3 _hitLastPos;
+    private bool _hasLastPos;
 
     void Start()
     {
@@ -60,7 +65,26 @@ public class PlayerBubble : Movable
         bubbleCustom.SetActive(true);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Obstacle"))
+        {
+            Obstacle obstacle = other.gameObject.GetComponent<Obstacle>();
+            if (obstacle)
+            {
+                if (!_hasLastPos)
+                {
+                    _hitLastPos = transform.position;
+                    _hasLastPos = true;
+                }
+                else
+                {
+                    Vector2 velocity = transform.position - _hitLastPos;
+                    float damage = obstacle.DamageAmount * velocity.magnitude;
+                    if(damage > _resistance)
+                        KillPlayer();
+                }
+            }
+        }
     }
 }

@@ -8,8 +8,7 @@ public class Movable : MonoBehaviour
     
     private Rigidbody2D _rb;
     private bool _mouseOn;
-
-    private Vector2 _hitVelocity;
+    
     private List<GameObject> _hittingObjects = new List<GameObject>();
 
     private void Awake()
