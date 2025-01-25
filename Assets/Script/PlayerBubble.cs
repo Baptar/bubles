@@ -1,6 +1,8 @@
+using System;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.U2D;
+using Random = UnityEngine.Random;
 
 public class PlayerBubble : Movable
 {
@@ -56,5 +58,9 @@ public class PlayerBubble : Movable
         GetComponent<SpriteRenderer>().enabled = false;
         transform.position = spawnTransform.position;
         bubbleCustom.SetActive(true);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
     }
 }
