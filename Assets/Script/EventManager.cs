@@ -7,15 +7,17 @@ public class EventManager : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     private bool[] randomEventsProgress;
     
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         randomEventsProgress = new bool[RandomEvents.Length];
         foreach (GameObject go in RandomEvents) go.SetActive(false);
         foreach (GameObject go in SpecialSpeech) go.SetActive(false);
     }
-
+    
+    
+    ////////// 
+    ///random Speech
+    /////////
     public void ShowRandomEvent()
     {
         // Calculate number of available events
@@ -53,35 +55,28 @@ public class EventManager : MonoBehaviour
         RandomEvents[rep].SetActive(true);
     }
     
-    public void ShowSpecialSpeech(int i) { SpecialSpeech[i].SetActive(true); }
-    
     
     ////////// 
     ///Special Speech
     /////////
-
+    public void ShowSpecialSpeech(int i) { SpecialSpeech[i].SetActive(true); }
+    
     public void OnSpecialBubbleFinished(int i)
     {
         switch (i)
         {
             case 0:
-                ShowRandomEvent();
+                gameManager.ShowRandomMission();
                 break;
             case 1:
-                ShowRandomEvent();
+                gameManager.ShowRandomMission();
                 break;
             case 2:
                 gameManager.GameWin();
                 break;
             default:
-                ShowRandomEvent();
+                gameManager.ShowRandomMission();
                 break;
         }
     }
-    
-    
-    
-    ////////// 
-    ///random Speech
-    /////////
 }
