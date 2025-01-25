@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
                 if (CheckBounds(mouseMovement))
                 {
                     Vector2 movement = mouseMovement * (Time.deltaTime * _movementSpeed * 10.0f);
-                    transform.Translate(movement.x, movement.y, 0f);
+                    transform.Translate(-movement.x, -movement.y, 0f);
                 }
             }
         }
