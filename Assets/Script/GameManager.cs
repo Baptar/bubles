@@ -190,6 +190,7 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame()
     {
+        StopFreeze();
         camera.transform.position = cameraSpawnPoint.position;
         TriggerOnBoarding.gameObject.SetActive(true);
         TriggerOnBoarding.RestartGame();
@@ -215,7 +216,7 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
-        
+        SceneManager.instance.LoadMenu();
     }
 
     public void StopFreeze()

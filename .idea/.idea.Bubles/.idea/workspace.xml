@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3f31b34-e05a-4c16-9a15-12738f4d5ceb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bubles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bubles/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mom.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Parent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Parent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/MissionTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/MissionTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/PlayerBubble.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/PlayerBubble.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +101,7 @@
       <workItem from="1737768453700" duration="2440000" />
       <workItem from="1737771208985" duration="5000" />
       <workItem from="1737808249928" duration="41865000" />
-      <workItem from="1737900037911" duration="4008000" />
+      <workItem from="1737900037911" duration="4793000" />
     </task>
     <servers />
   </component>
