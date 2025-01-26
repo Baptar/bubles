@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 5dd31847f9eb1f84c8a66d92d335f0e3
+guid: 59c1c165020abd9488d3797b3d9b8f71
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7105566582356397069
-    second: BULLE_V_UWU_0
+      213: -605493014881032553
+    second: EVENEMENTS_NORMAUX_0
+  - first:
+      213: 9173304990879564781
+    second: EVENEMENTS_NORMAUX_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +100,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WindowsStoreApps
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +113,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -126,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BULLE_V_UWU_0
+      name: EVENEMENTS_NORMAUX_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 11
-        width: 273
-        height: 281
+        x: 22
+        y: 37
+        width: 1192
+        height: 762
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +144,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f3b2ca17d4f36d90800000000000000
-      internalID: -7105566582356397069
+      spriteID: 796290e9f4bd897f0800000000000000
+      internalID: -605493014881032553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EVENEMENTS_NORMAUX_1
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 206
+        width: 7
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de3c1b579402e4f70800000000000000
+      internalID: 9173304990879564781
       vertices: []
       indices: 
       edges: []
@@ -160,8 +185,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      BULLE_V_UWU_0: -7105566582356397069
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
