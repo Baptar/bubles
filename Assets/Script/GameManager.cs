@@ -4,34 +4,38 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int numberMissionChild = 5;
+    [SerializeField] private int numberMissionChild = 3;
     [SerializeField] private int numberMissionTeenager = 3;
-    [SerializeField] private PlayerBubble playerBubble;
+    public PlayerBubble playerBubble;
     [SerializeField] private GameObject background;
     [SerializeField] private Texture[] texturesBackground;
     [SerializeField] private EventManager eventManager;
     
-    [SerializeField] private MissionTrigger[] missionTriggers;
-    [SerializeField] private GameObject[] missionDescription;
+    [SerializeField] private MissionTrigger[] missionTriggersChild;
+    [SerializeField] private MissionTrigger[] missionTriggersAdo;
+    [SerializeField] private GameObject[] missionDescriptionChild;
+    [SerializeField] private GameObject[] missionDescriptionAdo;
     
     private int age = 0;
     private int actualMission = 0;
-    private bool[] randomMissionsProgress;
+    private bool[] randomMissionsProgressChild;
+    private bool[] randomMissionsProgressAdo;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        randomMissionsProgress = new bool[missionTriggers.Length];
+        randomMissionsProgressChild = new bool[missionTriggersChild.Length];
+        randomMissionsProgressAdo = new bool[missionTriggersAdo.Length];
     }
 
-    private int SelectRandomMission()
+    private int SelectRandomMissionChild()
     {
         // Calculate number of available events
         int cpt = 0;
-        for (int i = 0; i < randomMissionsProgress.Length; i++)
+        for (int i = 0; i < randomMissionsProgressChild.Length; i++)
         {
-            if (!randomMissionsProgress[i])
+            if (!randomMissionsProgressChild[i])
             {
                 cpt++;
             }
@@ -40,15 +44,15 @@ public class GameManager : MonoBehaviour
         // case we don't have any more event available
         if (cpt == 0)
         {
-            return Random.Range(0, randomMissionsProgress.Length);
+            return Random.Range(0, randomMissionsProgressChild.Length);
         }
         
         // create array of number available missions
         int[] indexUnused = new int[cpt];
         int index = 0;
-        for (int i = 0; i < randomMissionsProgress.Length; i++)
+        for (int i = 0; i < randomMissionsProgressChild.Length; i++)
         {
-            if (!randomMissionsProgress[i])
+            if (!randomMissionsProgressChild[i])
             {
                 indexUnused[index] = i;
                 index++;
@@ -57,15 +61,69 @@ public class GameManager : MonoBehaviour
         
         // get random event in array of available events 
         int rep = indexUnused[Random.Range(0, indexUnused.Length)];
-        randomMissionsProgress[rep] = true;
+        randomMissionsProgressChild[rep] = true;
+        return rep;
+    }
+    
+    private int SelectRandomMissionAdo()
+    {
+        // Calculate number of available events
+        int cpt = 0;
+        for (int i = 0; i < randomMissionsProgressAdo.Length; i++)
+        {
+            if (!randomMissionsProgressAdo[i])
+            {
+                cpt++;
+            }
+        }
+        
+        // case we don't have any more event available
+        if (cpt == 0)
+        {
+            return Random.Range(0, randomMissionsProgressAdo.Length);
+        }
+        
+        // create array of number available missions
+        int[] indexUnused = new int[cpt];
+        int index = 0;
+        for (int i = 0; i < randomMissionsProgressAdo.Length; i++)
+        {
+            if (!randomMissionsProgressAdo[i])
+            {
+                indexUnused[index] = i;
+                index++;
+            }
+        }
+        
+        // get random event in array of available events 
+        int rep = indexUnused[Random.Range(0, indexUnused.Length)];
+        randomMissionsProgressAdo[rep] = true;
         return rep;
     }
 
-    public void ShowRandomMission()
+    public void ShowRandomMissionGlobal()
     {
-        int i = SelectRandomMission(); 
-        missionDescription[i].SetActive(true);
-        missionTriggers[i].gameObject.SetActive(true);
+        if (age == 0)
+        {
+            ShowRandomMissionChild();
+        }
+        else
+        {
+             ShowRandomMissionAdo();
+        }
+    }
+    public void ShowRandomMissionChild()
+    {
+        int i = SelectRandomMissionChild(); 
+        missionDescriptionChild[i].SetActive(true);
+        missionTriggersChild[i].gameObject.SetActive(true);
+    }
+    
+    public void ShowRandomMissionAdo()
+    {
+        int i = SelectRandomMissionAdo(); 
+        missionDescriptionAdo[i].SetActive(true);
+        missionTriggersAdo[i].gameObject.SetActive(true);
     }
     
     public void OnMissionComplete()
@@ -91,9 +149,13 @@ public class GameManager : MonoBehaviour
             SetAge(2);
         }
         // just finished basic mission
+        else if (actualMission < numberMissionChild)
+        {
+            eventManager.ShowRandomEventChild();
+        }
         else
         {
-            eventManager.ShowRandomEvent();
+            eventManager.ShowRandomEventAdo();
         }
     }
 
