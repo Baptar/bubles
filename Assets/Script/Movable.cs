@@ -60,7 +60,11 @@ public class Movable : MonoBehaviour
                 //Vector3 force = Vector3.Project(mouseVelocity, dir);
                 float rate = 1 / Time.deltaTime;
                 float dfr = 60.0f / rate;
-                CursorHit(new Vector2(mouseVelocity.x, mouseVelocity.y) / dfr);
+                if (dfr > 0)
+                {
+                    CursorHit(new Vector2(mouseVelocity.x, mouseVelocity.y) / dfr);
+                }
+
                 //CursorHit(new Vector2(force.x, force.y));
                 _mouseOn = true;
             }
