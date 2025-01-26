@@ -108,7 +108,7 @@ public class PlayerBubble : Movable
         // PLAYER DEATH SOUND
         
         gameManager.RestartGame();
-        playerName = "";
+        //playerName = "";
         SetAccessoryIndex(0);
         IncreaseKillCount();
         killCounntText.GetComponent<TextMeshProUGUI>().text = killCount.ToString();

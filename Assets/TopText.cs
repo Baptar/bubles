@@ -13,10 +13,18 @@ public class TopText : MonoBehaviour
     [SerializeField] private RectTransform rectTransform;
     public void SetPlayerName(string playerName)
     {
-        GetComponent<TextMeshProUGUI>().text = playerName;
+        if (playerName == "")
+        {
+            rawImageBefore.transform.localPosition = new Vector3(-126, 1.0f, 0);
+            rawImageAfter.transform.localPosition = new Vector3(126, 1.0f, 0);
+        }
+        else
+        {
+            GetComponent<TextMeshProUGUI>().text = playerName;
+            rawImageBefore.transform.localPosition = new Vector3(-rectTransform.rect.width / 2 - 43, 1.0f, 0);
+            rawImageAfter.transform.localPosition = new Vector3(rectTransform.rect.width / 2 + 43, 1.0f, 0);
+        }
         
-        rawImageBefore.transform.localPosition = new Vector3(-rectTransform.rect.width / 2 - 25, 15.9f, 0);
-        rawImageAfter.transform.localPosition = new Vector3(rectTransform.rect.width / 2 + 25, 15.9f, 0);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void SetAge(int age)
