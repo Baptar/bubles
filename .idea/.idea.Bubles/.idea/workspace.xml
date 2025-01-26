@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3f31b34-e05a-4c16-9a15-12738f4d5ceb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +102,7 @@
       <workItem from="1737768453700" duration="2440000" />
       <workItem from="1737771208985" duration="5000" />
       <workItem from="1737808249928" duration="41865000" />
-      <workItem from="1737900037911" duration="4793000" />
+      <workItem from="1737900037911" duration="5685000" />
     </task>
     <servers />
   </component>

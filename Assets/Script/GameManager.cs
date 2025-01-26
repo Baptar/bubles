@@ -177,10 +177,6 @@ public class GameManager : MonoBehaviour
     public void SetAge(int age)
     {
         playerBubble.SetAccessoryIndex(0);
-        if (age == 1)
-        {
-            playerBubble.gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        }
         this.age = age;
         _topText.SetAge(age);
         // faire la transition d'un age à un autre ICI
