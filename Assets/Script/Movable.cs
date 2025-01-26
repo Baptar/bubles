@@ -31,10 +31,16 @@ public class Movable : MonoBehaviour
 
     
     private SpriteRenderer _renderer;
+    
+    [SerializeField] private AudioClip _hitClip;
+
+    private AudioSource _audioSource;
+    
     public virtual void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _renderer = GetComponent<SpriteRenderer>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public virtual void Start()
@@ -42,7 +48,7 @@ public class Movable : MonoBehaviour
         _startSize = _renderer.size;
     }
 
-    public void CursorHit(Vector2 force)
+    public virtual void CursorHit(Vector2 force)
     {
         _rb.AddForce(force * _moveStrength);
         Feedback(force);
@@ -92,6 +98,7 @@ public class Movable : MonoBehaviour
     {
         if (!_isFeedbacking)
         {
+            _audioSource.PlayOneShot(_hitClip, 0.5f);
             _isReverse = false;
             //Vector2Int axisAffect = new Vector2Int(Mathf.RoundToInt(hitDir.normalized.x),Mathf.RoundToInt(hitDir.normalized.y));
 

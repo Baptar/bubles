@@ -21,12 +21,11 @@ public class PlayerBubble : Movable
 
     //[SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TopText topText;
-
     private string playerName = "";
     private int accessoryIndex = 0;
     private int colorIndex = 0;
     private Sprite[][] sprites = new Sprite[8][];
-    private string[] spriteNames = { "Pablo", "Bap", "Luna", "Seb", "Virgile", "Justine", "Nat", "Daph" };
+    private string[] spriteNames = { "Pablo", "Bap", "Luna", "Seb", "Virgile", "Ju", "Nat", "Daph" };
     private int killCount = 0;
 
     //Damage
@@ -157,6 +156,7 @@ public class PlayerBubble : Movable
                 else
                 {
                     Feedback(_rb.linearVelocity);
+                    
                 }
             }
         }
