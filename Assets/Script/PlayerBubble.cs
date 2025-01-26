@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
@@ -19,31 +20,36 @@ public class PlayerBubble : Movable
     [SerializeField] private Sprite[] spriteAccessory8;
     [SerializeField] private GameObject _missionSuccessPoint;
     [SerializeField] private GameObject killCounntText;
+
     [SerializeField] private GameManager gameManager;
+
     //[SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TopText topText;
-    
+
     private string playerName = "";
     private int accessoryIndex = 0;
     private int colorIndex = 0;
     private Sprite[][] sprites = new Sprite[8][];
     private string[] spriteNames = { "Pablo", "Bap", "Luna", "Seb", "Virgile", "Justine", "Nat", "Daph" };
     private int killCount = 0;
-    
+
     //Damage
     [SerializeField] private float _resistance;
     private Vector3 _hitLastPos;
     private bool _hasLastPos;
     private Animator _animator;
 
+
     public override void Awake()
     {
         base.Awake();
         _animator = GetComponent<Animator>();
     }
-    
-    void Start()
+
+    public override void Start()
     {
+        base.Start();
+        
         GetComponent<SpriteRenderer>().enabled = false;
         sprites[0] = spriteAccessory1;
         sprites[1] = spriteAccessory2;
@@ -54,7 +60,7 @@ public class PlayerBubble : Movable
         sprites[6] = spriteAccessory7;
         sprites[7] = spriteAccessory8;
     }
-    
+
     public void IncreaseKillCount()
     {
         killCount++;
@@ -64,7 +70,11 @@ public class PlayerBubble : Movable
     {
         return playerName;
     }
-    public void SetPlayerName(string pName) { playerName = pName; }
+
+    public void SetPlayerName(string pName)
+    {
+        playerName = pName;
+    }
 
     public void SetColorIndex(int colorIndex)
     {
@@ -74,11 +84,14 @@ public class PlayerBubble : Movable
 
     public void SetAccessoryIndex(int accessoryIndex)
     {
-        this.accessoryIndex = accessoryIndex; 
+        this.accessoryIndex = accessoryIndex;
         SetPlayerSprite(colorIndex, accessoryIndex);
     }
-    
-    private void SetPlayerSprite(int colorIndex, int accessoryIndex) { GetComponent<SpriteRenderer>().sprite = sprites[accessoryIndex][colorIndex]; }
+
+    private void SetPlayerSprite(int colorIndex, int accessoryIndex)
+    {
+        GetComponent<SpriteRenderer>().sprite = sprites[accessoryIndex][colorIndex];
+    }
 
     public void SpawnPlayer()
     {
@@ -86,6 +99,7 @@ public class PlayerBubble : Movable
         {
             playerName = spriteNames[Random.Range(0, spriteNames.Length)];
         }
+
         topText.SetPlayerName(playerName);
         //nameText.text = playerName;
         GetComponent<SpriteRenderer>().enabled = true;
@@ -126,7 +140,7 @@ public class PlayerBubble : Movable
         transform.position = _missionSuccessPoint.transform.position;
         UnblockMovement();
     }
-    
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.CompareTag("Obstacle"))
@@ -146,4 +160,5 @@ public class PlayerBubble : Movable
         }
     }
 }
+
 
