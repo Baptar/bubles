@@ -7,9 +7,12 @@
     <list default="true" id="e3f31b34-e05a-4c16-9a15-12738f4d5ceb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bubles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bubles/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/CustomName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/CustomName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/NameSetter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/NameSetter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/PlayerBubble.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/PlayerBubble.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TopText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TopText.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +29,7 @@
     <setting file="file://$PROJECT_DIR$/../NanoProjet/Assets/Project/Scripts/Managers/MoveManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/CustomColor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/CustomName.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui/Editor/UGUI/UI/CanvasScalerEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -113,7 +117,7 @@
       <workItem from="1737768453700" duration="2440000" />
       <workItem from="1737771208985" duration="5000" />
       <workItem from="1737808249928" duration="41865000" />
-      <workItem from="1737900037911" duration="8104000" />
+      <workItem from="1737900037911" duration="12720000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class PlayerBubble : Movable
@@ -16,6 +18,8 @@ public class PlayerBubble : Movable
     [SerializeField] private Sprite[] spriteAccessory8;
     [SerializeField] private GameObject _missionSuccessPoint;
     [SerializeField] private GameObject killCounntText;
+    [SerializeField] private NameSetter[] nameSetters;
+    [SerializeField] private TMP_InputField inputText;
 
     [SerializeField] private GameManager gameManager;
 
@@ -69,6 +73,7 @@ public class PlayerBubble : Movable
     public void SetPlayerName(string pName)
     {
         playerName = pName;
+        foreach (NameSetter nameSetter in nameSetters) nameSetter.ModifyTextPlayer(pName);
     }
 
     public void SetColorIndex(int colorIndex)
@@ -105,15 +110,23 @@ public class PlayerBubble : Movable
     public void KillPlayer()
     {
         // PLAYER DEATH SOUND
+        StartCoroutine(WaitAfterDeath(0.08f));
         
-        gameManager.RestartGame();
-        //playerName = "";
+        
+    }
+    
+    IEnumerator WaitAfterDeath(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        inputText.text = "";
+        playerName = "";
         SetAccessoryIndex(0);
         IncreaseKillCount();
         killCounntText.GetComponent<TextMeshProUGUI>().text = killCount.ToString();
         GetComponent<SpriteRenderer>().enabled = false;
         transform.position = spawnTransform.position;
         bubbleCustom.SetActive(true);
+        gameManager.RestartGame();
     }
 
     public void ChangeSpeed(float multiplier)

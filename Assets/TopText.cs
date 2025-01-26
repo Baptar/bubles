@@ -11,8 +11,11 @@ public class TopText : MonoBehaviour
     [SerializeField] private Texture[] leftTextures;
     [SerializeField] private Texture[] rightTextures;
     [SerializeField] private RectTransform rectTransform;
+    [SerializeField] private PlayerBubble playerBubble;
+    
     public void SetPlayerName(string playerName)
     {
+        playerBubble.SetPlayerName(playerName);
         if (playerName == "")
         {
             rawImageBefore.transform.localPosition = new Vector3(-126, 1.0f, 0);
