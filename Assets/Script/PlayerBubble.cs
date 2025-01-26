@@ -156,6 +156,10 @@ public class PlayerBubble : Movable
                     BlockMovement();
                     _animator.SetTrigger("Die");
                 }
+                else
+                {
+                    Feedback(_rb.linearVelocity);
+                }
             }
         }
     }
