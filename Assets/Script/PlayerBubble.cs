@@ -21,7 +21,7 @@ public class PlayerBubble : Movable
     [SerializeField] private GameObject killCounntText;
     [SerializeField] private TextMeshProUGUI nameText;
     
-    private string name = "";
+    private string playerName = "";
     private int accessoryIndex = 0;
     private int colorIndex = 0;
     private Sprite[][] sprites = new Sprite[5][];
@@ -57,9 +57,9 @@ public class PlayerBubble : Movable
 
     public string GetPlayerName()
     {
-        return name;
+        return playerName;
     }
-    public void SetName(string name) { this.name = name; }
+    public void SetPlayerName(string pName) { playerName = pName; }
 
     public void SetColorIndex(int colorIndex)
     {
@@ -77,11 +77,11 @@ public class PlayerBubble : Movable
 
     public void SpawnPlayer()
     {
-        if (name == "")
+        if (playerName == "")
         {
-            name = spriteNames[Random.Range(0, spriteNames.Length)];
-            nameText.text = name;
+            playerName = spriteNames[Random.Range(0, spriteNames.Length)];
         }
+        nameText.text = playerName;
         GetComponent<SpriteRenderer>().enabled = true;
         bubbleCustom.SetActive(false);
         UnblockMovement();
@@ -89,7 +89,7 @@ public class PlayerBubble : Movable
 
     public void KillPlayer()
     {
-        name = "";
+        playerName = "";
         SetAccessoryIndex(0);
         IncreaseKillCount();
         killCounntText.GetComponent<TextMeshProUGUI>().text = killCount.ToString();
