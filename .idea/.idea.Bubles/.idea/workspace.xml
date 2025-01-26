@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3f31b34-e05a-4c16-9a15-12738f4d5ceb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bubles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bubles/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/CameraManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/CameraManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameManager.cs" afterDir="false" />
-    </list>
+    <list default="true" id="e3f31b34-e05a-4c16-9a15-12738f4d5ceb" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +97,7 @@
       <updated>1737768452436</updated>
       <workItem from="1737768453700" duration="2440000" />
       <workItem from="1737771208985" duration="5000" />
-      <workItem from="1737808249928" duration="31351000" />
+      <workItem from="1737808249928" duration="32011000" />
     </task>
     <servers />
   </component>
@@ -118,37 +113,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Script/GameManager.cs</url>
-          <line>134</line>
-          <properties documentPath="C:\Users\Baptiste\Documents\GitHub\bubles\Assets\Script\GameManager.cs" containingFunctionPresentation="Method 'OnMissionComplete'">
-            <startOffsets>
-              <option value="4031" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4054" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Script/GameManager.cs</url>
-          <line>136</line>
-          <properties documentPath="C:\Users\Baptiste\Documents\GitHub\bubles\Assets\Script\GameManager.cs" containingFunctionPresentation="Method 'OnMissionComplete'">
-            <startOffsets>
-              <option value="4077" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4111" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

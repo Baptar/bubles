@@ -182,4 +182,10 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+
+    public void StopFreeze()
+    {
+        Time.timeScale = 1;
+    }
 }
