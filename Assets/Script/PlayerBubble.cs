@@ -26,7 +26,7 @@ public class PlayerBubble : Movable
     private string playerName = "";
     private int accessoryIndex = 0;
     private int colorIndex = 0;
-    private Sprite[][] sprites = new Sprite[5][];
+    private Sprite[][] sprites = new Sprite[8][];
     private string[] spriteNames = { "Pablo", "Bap", "Luna", "Seb", "Virgile", "Justine", "Nat", "Daph" };
     private int killCount = 0;
     
@@ -50,6 +50,9 @@ public class PlayerBubble : Movable
         sprites[2] = spriteAccessory3;
         sprites[3] = spriteAccessory4;
         sprites[4] = spriteAccessory5;
+        sprites[5] = spriteAccessory6;
+        sprites[6] = spriteAccessory7;
+        sprites[7] = spriteAccessory8;
     }
     
     public void IncreaseKillCount()

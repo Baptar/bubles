@@ -16,10 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] missionDescriptionChild;
     [SerializeField] private GameObject[] missionDescriptionAdo;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject camera;
+    [SerializeField] private Transform cameraSpawnPoint;
+    [SerializeField] private Transform cameraHallPosition;
     [SerializeField] private TopText _topText;
+    [SerializeField] private MissionTrigger TriggerOnBoarding;
     
     private int age = 0;
-    private int actualMission = 0;
+    private int actualMission = -1;
     private bool[] randomMissionsProgressChild;
     private bool[] randomMissionsProgressAdo;
     
@@ -133,14 +137,21 @@ public class GameManager : MonoBehaviour
     {
         actualMission++;
         
+        for (int i = 0; i < missionDescriptionAdo.Length; i++) missionDescriptionAdo[i].SetActive(false);
+        for (int i = 0; i < missionDescriptionChild.Length; i++) missionDescriptionChild[i].SetActive(false);
+        
         // finished inboarding
-        if (actualMission == 1)
+        if (actualMission == 0)
         {
             eventManager.ShowSpecialSpeech(0);
+            return;
         }
         
+        playerBubble.OnMissionSuccess();
+        camera.transform.position = cameraHallPosition.position;
+        
         // finished childhood
-        else if (actualMission == numberMissionChild)
+        if (actualMission == numberMissionChild)
         {
             eventManager.ShowSpecialSpeech(1);
             SetAge(1);
@@ -165,6 +176,11 @@ public class GameManager : MonoBehaviour
 
     public void SetAge(int age)
     {
+        playerBubble.SetAccessoryIndex(0);
+        if (age == 1)
+        {
+            playerBubble.gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        }
         this.age = age;
         _topText.SetAge(age);
         // faire la transition d'un age à un autre ICI
@@ -174,12 +190,25 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame()
     {
+        camera.transform.position = cameraSpawnPoint.position;
+        TriggerOnBoarding.gameObject.SetActive(true);
+        TriggerOnBoarding.RestartGame();
+        
         SetAge(0);
-        actualMission = 0;
+        actualMission = -1;
         for (int i = 0; i < missionDescriptionAdo.Length; i++) missionDescriptionAdo[i].SetActive(false);
         for (int i = 0; i < missionDescriptionChild.Length; i++) missionDescriptionChild[i].SetActive(false);
-        for (int i = 0; i < missionTriggersAdo.Length; i++) missionTriggersAdo[i].gameObject.SetActive(false);
-        for (int i = 0; i < missionTriggersChild.Length; i++) missionTriggersChild[i].gameObject.SetActive(false);
+        for (int i = 0; i < missionTriggersAdo.Length; i++)
+        {
+            missionTriggersAdo[i].gameObject.SetActive(false);
+            missionTriggersAdo[i].RestartGame();
+        }
+
+        for (int i = 0; i < missionTriggersChild.Length; i++)
+        {
+            missionTriggersChild[i].gameObject.SetActive(false);
+            missionTriggersChild[i].RestartGame();
+        }
         for (int i = 0; i < eventManager.randomEventsProgressChild.Length; i++) eventManager.randomEventsProgressChild[i] = false;
         for (int i = 0; i < eventManager.randomEventsProgressAdo.Length; i++) eventManager.randomEventsProgressAdo[i] = false;
     }

@@ -36,4 +36,11 @@ public class MissionTrigger : MonoBehaviour
          }
       }
    }
+
+   public void RestartGame()
+   {
+      triggered = false;
+      timer = 0f;
+      missionFinished = false;
+   }
 }
