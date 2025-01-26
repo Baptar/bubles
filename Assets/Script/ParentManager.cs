@@ -16,18 +16,12 @@ public class ParentManager : MonoBehaviour
     [SerializeField] private GameObject _speechBubble;
     [SerializeField] private TextMeshProUGUI _speechText;
 
-    private Animator _dadAnimator;
-    private Animator _mumAnimator;
-
     private void Awake()
     {
         if (instance == null)
             instance = this;
         else
             Destroy(this);
-
-        _dadAnimator = _dad.GetComponent<Animator>();
-        _mumAnimator = _mum.GetComponent<Animator>();
     }
 
     public void MoveParents(int roomIndex)
