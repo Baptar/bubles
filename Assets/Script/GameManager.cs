@@ -15,12 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private MissionTrigger[] missionTriggersAdo;
     [SerializeField] private GameObject[] missionDescriptionChild;
     [SerializeField] private GameObject[] missionDescriptionAdo;
-<<<<<<< Updated upstream
-
     [SerializeField] private GameObject pauseMenu;
-=======
     [SerializeField] private TopText _topText;
->>>>>>> Stashed changes
     
     private int age = 0;
     private int actualMission = 0;
