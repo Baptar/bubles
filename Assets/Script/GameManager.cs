@@ -176,15 +176,18 @@ public class GameManager : MonoBehaviour
     {
         SetAge(0);
         actualMission = 0;
-        playerBubble.KillPlayer();
-        // LANCER LA PREMIERE MISSION/tuto APRES LE SPAWN (quand on appuie sur bouton)
+        for (int i = 0; i < missionDescriptionAdo.Length; i++) missionDescriptionAdo[i].SetActive(false);
+        for (int i = 0; i < missionDescriptionChild.Length; i++) missionDescriptionChild[i].SetActive(false);
+        for (int i = 0; i < missionTriggersAdo.Length; i++) missionTriggersAdo[i].gameObject.SetActive(false);
+        for (int i = 0; i < missionTriggersChild.Length; i++) missionTriggersChild[i].gameObject.SetActive(false);
+        for (int i = 0; i < eventManager.randomEventsProgressChild.Length; i++) eventManager.randomEventsProgressChild[i] = false;
+        for (int i = 0; i < eventManager.randomEventsProgressAdo.Length; i++) eventManager.randomEventsProgressAdo[i] = false;
     }
 
     public void GameWin()
     {
         
     }
-
 
     public void StopFreeze()
     {

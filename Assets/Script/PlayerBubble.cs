@@ -19,6 +19,7 @@ public class PlayerBubble : Movable
     [SerializeField] private Sprite[] spriteAccessory8;
     [SerializeField] private GameObject _missionSuccessPoint;
     [SerializeField] private GameObject killCounntText;
+    [SerializeField] private GameManager gameManager;
     //[SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TopText topText;
     
@@ -91,6 +92,7 @@ public class PlayerBubble : Movable
 
     public void KillPlayer()
     {
+        gameManager.RestartGame();
         playerName = "";
         SetAccessoryIndex(0);
         IncreaseKillCount();

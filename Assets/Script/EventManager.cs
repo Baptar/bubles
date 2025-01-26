@@ -7,8 +7,8 @@ public class EventManager : MonoBehaviour
     [SerializeField] private GameObject[] SpecialSpeech;
     [SerializeField] private GameObject onBoardingSpeech;
     [SerializeField] private GameManager gameManager;
-    private bool[] randomEventsProgressChild;
-    private bool[] randomEventsProgressAdo;
+    public bool[] randomEventsProgressChild;
+    public bool[] randomEventsProgressAdo;
     
     void Start()
     {
