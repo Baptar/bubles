@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
-using UnityEngine.U2D;
 using Random = UnityEngine.Random;
 
 public class PlayerBubble : Movable
@@ -109,6 +105,8 @@ public class PlayerBubble : Movable
 
     public void KillPlayer()
     {
+        // PLAYER DEATH SOUND
+        
         gameManager.RestartGame();
         playerName = "";
         SetAccessoryIndex(0);
