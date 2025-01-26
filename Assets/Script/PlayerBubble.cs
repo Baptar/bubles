@@ -19,7 +19,8 @@ public class PlayerBubble : Movable
     [SerializeField] private Sprite[] spriteAccessory8;
     [SerializeField] private GameObject _missionSuccessPoint;
     [SerializeField] private GameObject killCounntText;
-    [SerializeField] private TextMeshProUGUI nameText;
+    //[SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TopText topText;
     
     private string playerName = "";
     private int accessoryIndex = 0;
@@ -81,7 +82,8 @@ public class PlayerBubble : Movable
         {
             playerName = spriteNames[Random.Range(0, spriteNames.Length)];
         }
-        nameText.text = playerName;
+        topText.SetPlayerName(playerName);
+        //nameText.text = playerName;
         GetComponent<SpriteRenderer>().enabled = true;
         bubbleCustom.SetActive(false);
         UnblockMovement();

@@ -15,8 +15,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private MissionTrigger[] missionTriggersAdo;
     [SerializeField] private GameObject[] missionDescriptionChild;
     [SerializeField] private GameObject[] missionDescriptionAdo;
+<<<<<<< Updated upstream
 
     [SerializeField] private GameObject pauseMenu;
+=======
+    [SerializeField] private TopText _topText;
+>>>>>>> Stashed changes
     
     private int age = 0;
     private int actualMission = 0;
@@ -166,7 +170,7 @@ public class GameManager : MonoBehaviour
     public void SetAge(int age)
     {
         this.age = age;
-        
+        _topText.SetAge(age);
         // faire la transition d'un age à un autre ICI
         
         background.GetComponent<RawImage>().texture = texturesBackground[age];
