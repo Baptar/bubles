@@ -13,8 +13,7 @@ public class TopText : MonoBehaviour
     [SerializeField] private RectTransform rectTransform;
     public void SetPlayerName(string playerName)
     {
-        /*GetComponent<TextMeshProUGUI>().text = playerName;
-        GetComponent<ContentSizeFitter>().horizontalFit = ContentSizeFitter.FitMode.PreferredSize;*/
+        GetComponent<TextMeshProUGUI>().text = playerName;
         
         rawImageBefore.transform.localPosition = new Vector3(-rectTransform.rect.width / 2 - 25, 15.9f, 0);
         rawImageAfter.transform.localPosition = new Vector3(rectTransform.rect.width / 2 + 25, 15.9f, 0);
