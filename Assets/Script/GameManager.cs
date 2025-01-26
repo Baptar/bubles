@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private MissionTrigger[] missionTriggersAdo;
     [SerializeField] private GameObject[] missionDescriptionChild;
     [SerializeField] private GameObject[] missionDescriptionAdo;
+
+    [SerializeField] private GameObject pauseMenu;
     
     private int age = 0;
     private int actualMission = 0;
@@ -187,5 +189,17 @@ public class GameManager : MonoBehaviour
     public void StopFreeze()
     {
         Time.timeScale = 1;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+    }
+
+    public void Unpause()
+    {
+        pauseMenu.SetActive(false);
+        StopFreeze();
     }
 }

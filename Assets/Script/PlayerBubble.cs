@@ -127,7 +127,9 @@ public class PlayerBubble : Movable
             Obstacle obstacle = other.gameObject.GetComponent<Obstacle>();
             if (obstacle)
             {
-                float damage = obstacle.DamageAmount * _rb.linearVelocity.magnitude / Time.fixedDeltaTime / 100f;
+                float rate = 1 / Time.fixedDeltaTime;
+                float dfr = 60.0f / rate;
+                float damage = obstacle.DamageAmount * _rb.linearVelocity.magnitude / dfr / 100f;
                 if (damage > _resistance)
                 {
                     BlockMovement();
