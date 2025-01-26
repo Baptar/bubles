@@ -129,7 +129,7 @@ public class PlayerBubble : Movable
             {
                 float rate = 1 / Time.fixedDeltaTime;
                 float dfr = 60.0f / rate;
-                float damage = obstacle.DamageAmount * _rb.linearVelocity.magnitude / dfr / 100f;
+                float damage = obstacle.DamageAmount * _rb.linearVelocity.magnitude / dfr;
                 if (damage > _resistance)
                 {
                     BlockMovement();
