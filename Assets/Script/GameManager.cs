@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
     public void ShowRandomMissionChild()
     {
         int i = SelectRandomMissionChild(); 
+        Debug.Log(i);
         missionDescriptionChild[i].SetActive(true);
         missionTriggersChild[i].gameObject.SetActive(true);
     }
@@ -137,10 +138,11 @@ public class GameManager : MonoBehaviour
         }
         
         // finished childhood
-        if (actualMission == numberMissionChild)
+        else if (actualMission == numberMissionChild)
         {
             eventManager.ShowSpecialSpeech(1);
             SetAge(1);
+            
         }
         // finished to be teenager (win game)
         else if (actualMission == numberMissionChild + numberMissionTeenager)

@@ -34,7 +34,7 @@ public class CameraManager : MonoBehaviour
                 transform.Translate(-Vector3.right * Time.deltaTime * speed);
             }
         }
-        else if (playerBubble.transform.position.x > rightLimitTransformRef.position.x)
+        if (playerBubble.transform.position.x > rightLimitTransformRef.position.x)
         {
             // bouger vers la droite
             if (CanGoRight())
@@ -42,7 +42,7 @@ public class CameraManager : MonoBehaviour
                 transform.Translate(Vector3.right * Time.deltaTime * speed);
             }
         }
-        else if (playerBubble.transform.position.y > topLimitTransformRef.position.y)
+        if (playerBubble.transform.position.y > topLimitTransformRef.position.y)
         {
             // bouger vers le haut
             if (CanGoUp())
@@ -50,7 +50,7 @@ public class CameraManager : MonoBehaviour
                 transform.Translate(Vector3.up * Time.deltaTime * speed);
             }
         }
-        else if (playerBubble.transform.position.y < bottomLimitTransformRef.position.y)
+        if (playerBubble.transform.position.y < bottomLimitTransformRef.position.y)
         {
             // bouger vers le bas
             if (CanGoDown())
