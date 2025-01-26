@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,15 +11,41 @@ public class Movable : MonoBehaviour
     private bool _mouseOn;
     
     private List<GameObject> _hittingObjects = new List<GameObject>();
+    
+    
+    //feedback
+    [SerializeField, Range(0, 1f)]
+    private float _animationDuration = 0.25f;
 
+    [SerializeField] private AnimationCurve _feedbackAnimCurve = new AnimationCurve(
+        new Keyframe(0f, 0f),
+        new Keyframe(0.25f, 1f),
+        new Keyframe(1f, 0f)
+    );
+
+    [SerializeField] private float _maxSize;
+    
+    private Vector2 _startSize;
+    private bool _isReverse;
+    private bool _isFeedbacking;
+
+    
+    private SpriteRenderer _renderer;
     public virtual void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _renderer = GetComponent<SpriteRenderer>();
+    }
+
+    public virtual void Start()
+    {
+        _startSize = _renderer.size;
     }
 
     public void CursorHit(Vector2 force)
     {
         _rb.AddForce(force * _moveStrength);
+        Feedback(force);
     }
 
     private void OnMouseEnter()
@@ -56,5 +83,61 @@ public class Movable : MonoBehaviour
     {
         _rb.bodyType = RigidbodyType2D.Dynamic;
     }
+    
+    public void Feedback(Vector2 hitDir)
+    {
+        if (!_isFeedbacking)
+        {
+            _isReverse = false;
+            //Vector2Int axisAffect = new Vector2Int(Mathf.RoundToInt(hitDir.normalized.x),Mathf.RoundToInt(hitDir.normalized.y));
 
+            Vector2Int axisAffect = new Vector2Int(1, 0);
+            if (hitDir.normalized.x < hitDir.normalized.y)
+                axisAffect = new Vector2Int(0, 1);
+            StartCoroutine(EffectCoroutine(axisAffect));
+        }
+    }
+
+    private IEnumerator EffectCoroutine(Vector2Int affectAxis)
+    {
+        _isReverse = !_isReverse;
+                
+        float elapsedTime = 0;
+        Vector3 modifiedSize = _startSize;
+
+        while (elapsedTime < _animationDuration)
+        {
+            elapsedTime += Time.deltaTime;
+                    
+            float curvePosition;
+                    
+            if (_isReverse)
+                curvePosition = 1 - (elapsedTime / _animationDuration);
+            else
+                curvePosition = elapsedTime / _animationDuration;
+                    
+            float curveValue = _feedbackAnimCurve.Evaluate(curvePosition);
+            float remappedValue = 1f + (curveValue * (_maxSize - 1f));
+
+            float minimumThreshold = 0.0001f;
+            if (Mathf.Abs(remappedValue) < minimumThreshold)
+                remappedValue = minimumThreshold;
+            
+            
+            if (affectAxis.x == 1)
+                modifiedSize.x = _startSize.x * remappedValue;
+            else
+                modifiedSize.x = _startSize.x / remappedValue;
+
+            if (affectAxis.y == 1)
+                modifiedSize.y = _startSize.y * remappedValue;
+            else
+                modifiedSize.y = _startSize.y / remappedValue;
+
+            _renderer.size = modifiedSize;
+
+            yield return null;
+        }
+    }
+    
 }
