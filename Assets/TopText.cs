@@ -13,20 +13,20 @@ public class TopText : MonoBehaviour
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private PlayerBubble playerBubble;
     
-    public void SetPlayerName(string playerName)
+    public void SetPlayerName(string playerName, bool modifImagePosition)
     {
         playerBubble.SetPlayerName(playerName);
-        if (playerName == "")
+        GetComponent<TextMeshProUGUI>().text = playerName;
+        if (modifImagePosition)
         {
-            rawImageBefore.transform.localPosition = new Vector3(-126, 1.0f, 0);
-            rawImageAfter.transform.localPosition = new Vector3(126, 1.0f, 0);
-        }
-        else
-        {
-            GetComponent<TextMeshProUGUI>().text = playerName;
             rawImageBefore.transform.localPosition = new Vector3(-rectTransform.rect.width / 2 - 43, 1.0f, 0);
             rawImageAfter.transform.localPosition = new Vector3(rectTransform.rect.width / 2 + 43, 1.0f, 0);
         }
+        else
+        {
+            ResetPositionImage();
+        }
+        
         
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,8 +36,9 @@ public class TopText : MonoBehaviour
         rawImageAfter.texture = rightTextures[age];
     }
 
-    private void Update()
+    public void ResetPositionImage()
     {
-        //Debug.Log(GetComponent<RectTransform>().rect.width);
+        rawImageBefore.transform.localPosition = new Vector3(-128, 1.0f, 0);
+        rawImageAfter.transform.localPosition = new Vector3(128, 1.0f, 0);
     }
 }

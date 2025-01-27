@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movable : MonoBehaviour
@@ -16,6 +17,8 @@ public class Movable : MonoBehaviour
     //feedback
     [SerializeField, Range(0, 1f)]
     private float _animationDuration = 0.25f;
+    
+    [SerializeField] protected GameManager gameManager;
 
     [SerializeField] private AnimationCurve _feedbackAnimCurve = new AnimationCurve(
         new Keyframe(0f, 0f),
@@ -98,7 +101,7 @@ public class Movable : MonoBehaviour
     {
         if (!_isFeedbacking)
         {
-            _audioSource.PlayOneShot(_hitClip, 0.5f);
+            if (_audioSource && !_audioSource.isPlaying && gameManager.gameStarted) _audioSource.PlayOneShot(_hitClip, 0.5f);
             _isReverse = false;
             //Vector2Int axisAffect = new Vector2Int(Mathf.RoundToInt(hitDir.normalized.x),Mathf.RoundToInt(hitDir.normalized.y));
 

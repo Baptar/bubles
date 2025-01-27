@@ -105,7 +105,11 @@ public class EventManager : MonoBehaviour
     ////////// 
     ///Special Speech
     /////////
-    public void ShowSpecialSpeech(int i) { SpecialSpeech[i].SetActive(true); }
+    public void ShowSpecialSpeech(int i)
+    {
+        SpecialSpeech[i].SetActive(true);
+        SpecialSpeech[i].GetComponent<BubbleAnimation>().SpawnBubble();
+    }
     
     public void OnSpecialBubbleFinished(int i)
     {

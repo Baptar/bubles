@@ -11,11 +11,12 @@ public class NameSetter : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<TextMeshProUGUI>().text = beforeNameText + playerBubble.GetPlayerName() + afterNameText;
+        GetComponent<TextMeshProUGUI>().text = beforeNameText + "<b>" + playerBubble.GetPlayerName() + "</b>" + afterNameText;
+        
     }
 
     public void ModifyTextPlayer(string text)
     {
-        GetComponent<TextMeshProUGUI>().text = beforeNameText + text + afterNameText;
+        GetComponent<TextMeshProUGUI>().text = beforeNameText + "<b>" + text + "</b>" + afterNameText;
     }
 }

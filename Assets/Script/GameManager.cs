@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TopText _topText;
     [SerializeField] private MissionTrigger TriggerOnBoarding;
     
+    public bool gameStarted = false;
     private int age = 0;
     private int actualMission = -1;
     private bool[] randomMissionsProgressChild;
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviour
         int i = SelectRandomMissionChild(); 
         Debug.Log(i);
         missionDescriptionChild[i].SetActive(true);
+        missionDescriptionChild[i].GetComponent<BubbleAnimation>().SpawnBubble();
         missionTriggersChild[i].gameObject.SetActive(true);
     }
     
@@ -185,6 +187,7 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame()
     {
+        _topText.ResetPositionImage();
         StopFreeze();
         camera.transform.position = cameraSpawnPoint.position;
         TriggerOnBoarding.gameObject.SetActive(true);
@@ -229,5 +232,10 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         StopFreeze();
+    }
+
+    public void SetGameStarted()
+    {
+        gameStarted = true;
     }
 }

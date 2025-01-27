@@ -20,8 +20,8 @@ public class PlayerBubble : Movable
     [SerializeField] private GameObject killCounntText;
     [SerializeField] private NameSetter[] nameSetters;
     [SerializeField] private TMP_InputField inputText;
-
-    [SerializeField] private GameManager gameManager;
+    [SerializeField] private AudioClip clipDead;
+    
 
     //[SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TopText topText;
@@ -37,6 +37,7 @@ public class PlayerBubble : Movable
     private Vector3 _hitLastPos;
     private bool _hasLastPos;
     private Animator _animator;
+    private bool _canDie = true;
 
 
     public override void Awake()
@@ -98,9 +99,14 @@ public class PlayerBubble : Movable
         if (playerName == "")
         {
             playerName = spriteNames[Random.Range(0, spriteNames.Length)];
+            topText.ResetPositionImage();
+            topText.SetPlayerName(playerName, false);
         }
-
-        topText.SetPlayerName(playerName);
+        else
+        {
+            topText.SetPlayerName(playerName, true);
+        }
+        
         //nameText.text = playerName;
         GetComponent<SpriteRenderer>().enabled = true;
         bubbleCustom.SetActive(false);
@@ -109,6 +115,8 @@ public class PlayerBubble : Movable
 
     public void KillPlayer()
     {
+        gameManager.gameStarted = false;
+        gameManager.GetComponent<AudioSource>().PlayOneShot(clipDead);
         // PLAYER DEATH SOUND
         StartCoroutine(WaitAfterDeath(0.08f));
         
@@ -161,7 +169,7 @@ public class PlayerBubble : Movable
                 float rate = 1 / Time.fixedDeltaTime;
                 float dfr = 60.0f / rate;
                 float damage = obstacle.DamageAmount * _rb.linearVelocity.magnitude / dfr;
-                if (damage > _resistance)
+                if (damage  > _resistance && _canDie)
                 {
                     BlockMovement();
                     _animator.SetTrigger("Die");
@@ -169,7 +177,6 @@ public class PlayerBubble : Movable
                 else
                 {
                     Feedback(_rb.linearVelocity);
-                    
                 }
             }
         }
