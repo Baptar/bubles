@@ -216,6 +216,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.instance.LoadMenu();
     }
+    
+    public void GoMainMenu()
+    {
+        SceneManager.instance.LoadMenu();
+    }
 
     public void StopFreeze()
     {
