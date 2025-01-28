@@ -18,6 +18,8 @@ public class SceneManager : MonoBehaviour
     public void LoadMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        instance = null;
+        Destroy(gameObject);
     }
 
     public void LoadGame()
@@ -28,5 +30,11 @@ public class SceneManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+    
+    public void DestroyThis()
+    {
+        instance = null;
+        Destroy(gameObject);
     }
 }

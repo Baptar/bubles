@@ -21,4 +21,12 @@ public class SoundManager : MonoBehaviour
     {
         sourceButton.Play();
     }
+
+    public void DestroyThis()
+    {
+        instance = null;
+        Destroy(gameObject);
+    }
+    
+    
 }

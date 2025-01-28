@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform cameraHallPosition;
     [SerializeField] private TopText _topText;
     [SerializeField] private MissionTrigger TriggerOnBoarding;
-    
+    [SerializeField] private AudioClip winAudioClip;
     public bool gameStarted = false;
     private int age = 0;
     private int actualMission = -1;
@@ -162,6 +162,7 @@ public class GameManager : MonoBehaviour
         else if (actualMission == numberMissionChild + numberMissionTeenager)
         {
             eventManager.ShowSpecialSpeech(2);
+            GetComponent<AudioSource>().PlayOneShot(winAudioClip);
             SetAge(2);
         }
         // just finished basic mission
@@ -219,6 +220,7 @@ public class GameManager : MonoBehaviour
     
     public void GoMainMenu()
     {
+        SoundManager.instance.DestroyThis();
         SceneManager.instance.LoadMenu();
     }
 

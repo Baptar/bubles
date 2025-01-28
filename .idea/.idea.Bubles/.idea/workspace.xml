@@ -8,7 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bubles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bubles/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SceneManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +118,7 @@
       <workItem from="1737900037911" duration="14595000" />
       <workItem from="1737953473030" duration="821000" />
       <workItem from="1738003028849" duration="4545000" />
-      <workItem from="1738086004722" duration="1902000" />
+      <workItem from="1738086004722" duration="5205000" />
     </task>
     <servers />
   </component>
