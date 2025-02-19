@@ -215,6 +215,7 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
+        SoundManager.instance.DestroyThis();
         SceneManager.instance.LoadMenu();
     }
     
